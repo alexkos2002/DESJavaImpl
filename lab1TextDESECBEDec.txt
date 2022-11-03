@@ -1,0 +1,58 @@
+4 Technical Solutions
+There are two strategies for dealing with the above difficulties: feature extraction and pattern
+classification based on the extracted features. One is to construct a “good” feature space in
+which the face manifolds become simpler i.e., less nonlinear and nonconvex than those in the
+other spaces. This includes two levels of processing: (1) normalize face images geometrically
+and photometrically, such as using morphing and histogram equalization; and (2) extract features
+in the normalized images which are stable with respect to such variations, such as based
+on Gabor wavelets.
+The second strategy is to construct classification engines able to solve difficult nonlinear
+classification and regression problems in the feature space and to generalize better. Although
+good normalization and feature extraction reduce the nonlinearity and nonconvexity, they do
+not solve the problems completely and classification engines able to deal with such difficulties
+8 Stan Z. Li and Anil K. Jain
+are still necessary to achieve high performance. A successful algorithm usually combines both
+strategies.
+With the geometric feature-based approach used in the early days [5, 10, 14, 24], facial
+features such as eyes, nose, mouth, and chin are detected. Properties of and relations (e.g.,
+areas, distances, angles) between the features are used as descriptors for face recognition. Advantages
+of this approach include economy and efficiency when achieving data reduction and
+insensitivity to variations in illumination and viewpoint. However, facial feature detection and
+measurement techniques developed to date are not reliable enough for the geometric featurebased
+recognition [7], and such geometric properties alone are inadequate for face recognition
+because rich information contained in the facial texture or appearance is discarded. These are
+reasons why early techniques are not effective.
+The statistical learning approach learns from training data (appearance images or features
+extracted from appearance) to extract good features and construct classification engines. During
+the learning, both prior knowledge about face(s) and variations seen in the training data are
+taken into consideration. Many successful algorithms for face detection, alignment and matching
+nowadays are learning-based.
+The appearance-based approach, such as PCA [28] and LDA [3] based methods, has significantly
+advanced face recognition techniques. Such an approach generally operates directly on
+an image-based representation (i.e., array of pixel intensities). It extracts features in a subspace
+derived from training images. Using PCA, a face subspace is constructed to represent “optimally”
+only the face object; using LDA, a discriminant subspace is constructed to distinguish
+“optimally” faces of different persons. Comparative reports (e.g., [3]) show that LDA-based
+methods generally yield better results than PCA-based ones.
+Although these linear, holistic appearance-based methods avoid instability of the early geometric
+feature-based methods, they are not accurate enough to describe subtleties of original
+manifolds in the original image space. This is due to their limitations in handling nonlinearity
+in face recognition: there, protrusions of nonlinear manifolds may be smoothed and concavities
+may be filled in, causing unfavorable consequences
+Such linear methods can be extended using nonlinear kernel techniques (kernel PCA [25]
+and kernel LDA [19]) to deal with nonlinearity in face recognition [11, 16, 20, 31]. There, a nonlinear
+projection (dimension reduction) from the image space to a feature space is performed;
+the manifolds in the resulting feature space become simple, yet with subtleties preserved. Although
+the kernel methods may achieve good performance on the training data, however, it may
+not be so for unseen data owing to their more flexibility than the linear methods and overfitting
+thereof.
+Another approach to handle the nonlinearity is to construct a local appearance-based feature
+space, using appropriate image filters, so the distributions of faces are less affected by various
+changes. Local features analysis (LFA) [22], Gabor wavelet-based features (such as elastic
+graph bunch matching, EGBM) [15, 30, 17] and local binary pattern (LBP) [1] have been used
+for this purpose.
+Some of these algorithms may be considered as combining geometric (or structural) feature
+detection and local appearance feature extraction, to increase stability of recognition performance
+under changes in viewpoint, illumination, and expression. A taxonomy of major face
+recognition algorithms in Figure 1.8 provides an overview of face recognition technology based
+on pose dependency, face representation, and features used for matching.     
